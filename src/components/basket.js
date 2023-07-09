@@ -2,18 +2,19 @@ import React from 'react'
 import Product from './product'
 import BasketItem from './basket_item'
 import styled from 'styled-components'
+import DiscountForm from './discount_form'
 
 // styles
 const Total = styled.p`
 background-color: #d54854;
-padding: 10px;
+padding: 10px 0;
 margin: 10px;
 width: 350px;
 border-radius: 10px;
 font-size: 25px;
 `
 
-const Basket = ({basket, totalPrice}) => {
+const Basket = ({basket, totalPrice, handleDiscount, setCode}) => {
   const tidyBasket = basket.reduce((accumulator, current) => {
     if (!accumulator.find((item) => item.id === current.id)){
       accumulator.push(current);
@@ -29,9 +30,11 @@ const Basket = ({basket, totalPrice}) => {
     <>
     
     <div>
-      <div>{basketItems}</div>
+      <div>{basketItems}
       <Total>Total Price: £{totalPrice}</Total>
+      </div>
     </div>
+    <DiscountForm handleDiscount={handleDiscount} setCode={setCode}></DiscountForm>
     </>
   )
 }

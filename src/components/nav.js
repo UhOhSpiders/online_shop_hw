@@ -32,8 +32,11 @@ const Nav = ({basket}) => {
     <>
     
     <NavUl>
+      <Link to="/">
     <Img src="https://static.thenounproject.com/png/22971-200.png"></Img>
+    </Link>
     <Header>Extremely Rare Beyblades</Header>
+    
         <li>
             <Link to="/" style={linkStyle}>Home</Link>
         </li>

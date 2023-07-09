@@ -4,7 +4,7 @@ import styled from 'styled-components';
 // styles
 const BasketItemDiv = styled.div`
 background-color: #d3f5d1;
-padding: 10px;
+padding: 2px;
 margin: 10px;
 width: 350px;
 border-radius: 10px;

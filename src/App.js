@@ -9,6 +9,8 @@ const App = () => {
     const [products, setProducts] = useState([]);
     const [basket, setBasket] = useState([]);
     const [totalPrice, setTotalPrice] = useState('');
+    const [code, setCode] = useState('');
+    const [discountApplied, setDiscountApplied] = useState(false);
 
     useEffect(() => {
       loadProducts();
@@ -73,10 +75,27 @@ const addToBasket = (product) => {
   setProducts(products);
 }
 
+const handleDiscount = (code) => {
+  if(!discountApplied){
+    if(code === 'iLoveDiscounts'){
+  setDiscountApplied(true)
+  const discountedPrice = (totalPrice/2)
+  setTotalPrice(discountedPrice.toFixed(2))
+    }
+  }
+}
+
 const getTotalPrice = () => {
+  if(!discountApplied){
   const initialValue = 0; 
   const sumBasket = basket.reduce((a,c) => a + c['price'], initialValue);
   setTotalPrice(sumBasket.toFixed(2));
+  }else{
+    const initialValue = 0; 
+  let sumBasket = basket.reduce((a,c) => a + c['price'], initialValue);
+  setTotalPrice(sumBasket.toFixed(2));
+  setTotalPrice(totalPrice/2)
+  }
 }
 
 
@@ -87,7 +106,7 @@ return (
       <Nav basket={basket}/>
       <Routes>
         <Route path="/" element={<Home products={products} addToBasket={addToBasket}/>}/>
-        <Route path="/basket" element={<Basket basket={basket} totalPrice={totalPrice}/>}/>
+        <Route path="/basket" element={<Basket basket={basket} totalPrice={totalPrice} handleDiscount={handleDiscount} setCode={setCode}/>}/>
       </Routes>
       </>
     </Router>
