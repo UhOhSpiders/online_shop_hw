@@ -29,6 +29,7 @@ const App = () => {
               price: 19.99,
               description: "Spryzen Requiem is an Attack type Beyblade with a Dragon Bit Beast. It features a unique 'Requiem' layer that can change its shape during battle.",
               image: "https://i.ebayimg.com/images/g/MhQAAOSwXZpiefiu/s-l1600.jpg",
+              quantity: 0,
             },
             {
               id: 2,
@@ -36,6 +37,7 @@ const App = () => {
               price: 24.99,
               description: "Valkyrie 17S, Destroy' 2B is an Attack type Beyblade with a Valkyrie Bit Beast. It features a 'Destroy' layer that can destroy other Beyblades' layers.",
               image: "https://static.wikia.nocookie.net/beyblade/images/e/e6/Cho-Z_Valtryek.Z-P.Ds%27.jpg",
+              quantity: 0,
             },
             {
               id: 3,
@@ -43,20 +45,23 @@ const App = () => {
               price: 29.99,
               description: "Rage Longinus 100HF is an Attack type Beyblade with a Longinus Bit Beast. It features a 'Rage' layer that can generate powerful shockwaves.",
               image: 'https://i.ebayimg.com/images/g/cKQAAOSwH8xiaQwn/s-l1600.jpg',
+              quantity: 0,
             },
             {
               id: 4,
               name: "Astral Spryzen 12 Volcanic Xtend+",
               price: 34.99,
               description: "Astral Spryzen 12 Volcanic Xtend+ is an Attack type Beyblade with a Spryzen Bit Beast. It features a 'Volcanic' layer that can generate powerful flames.",
-              image: 'https://static.wikia.nocookie.net/beyblade/images/4/4d/BBDB-Astral_Spriggan_Over_Quattro-0_%28Left%29.png'
+              image: 'https://static.wikia.nocookie.net/beyblade/images/4/4d/BBDB-Astral_Spriggan_Over_Quattro-0_%28Left%29.png',
+              quantity: 0,
             },
             {
               id: 5,
               name: "Genesis Valtryek 7 Vertex",
               price: 39.99,
               description: "Genesis Valtryek 7 Vertex is an Attack type Beyblade with a Valtryek Bit Beast. It features a 'Genesis' layer that can create a powerful vortex.",
-              image: 'https://i.ebayimg.com/images/g/lG0AAOSwdN1jyXMV/s-l1200.jpg'
+              image: 'https://i.ebayimg.com/images/g/lG0AAOSwdN1jyXMV/s-l1200.jpg',
+              quantity: 0,
             },
           ]; 
 
@@ -111,6 +116,7 @@ const getTotalPrice = () => {
 
 const placeOrder = () => {
   setBasket([]);
+  loadProducts();
   setTotalPrice('0');
   setDiscountApplied(false);
   setOrderPlaced(true);
