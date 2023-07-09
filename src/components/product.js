@@ -31,10 +31,10 @@ const Product = ({product, addToBasket}) => {
   border-radius: 10px;
   cursor: pointer;
   &:hover{
-    /* border-style: solid;
-    border-color: black;
-    border-width: 2px; */
-    box-shadow: 2px 2px 5px #071906;
+    box-shadow: 2px 2px 5px #758e73;
+  }
+  &:active{
+    background-color: black;
   }
   `
 

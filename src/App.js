@@ -4,6 +4,7 @@ import './App.css';
 import Home from './components/home.js'
 import Nav from './components/nav.js'
 import Basket from './components/basket.js'
+import Checkout from './components/checkout.js'
 
 const App = () => {
     const [products, setProducts] = useState([]);
@@ -11,6 +12,7 @@ const App = () => {
     const [totalPrice, setTotalPrice] = useState('');
     const [code, setCode] = useState('');
     const [discountApplied, setDiscountApplied] = useState(false);
+    const [orderPlaced, setOrderPlaced] = useState(false);
 
     useEffect(() => {
       loadProducts();
@@ -64,6 +66,7 @@ const loadProducts = () => {
 
 const addToBasket = (product) => {
   setBasket([...basket, product]);
+  setOrderPlaced(false);
   let inputID = product.id;
   let productToChange = products.find(findProduct);
   function findProduct(product) {
@@ -75,9 +78,17 @@ const addToBasket = (product) => {
   setProducts(products);
 }
 
+const removeById = (id) => {
+  let currentBasket = basket;
+  let newBasket = currentBasket.filter((product) => {
+    return product.id != id;
+  })
+  setBasket(newBasket);
+}
+
 const handleDiscount = (code) => {
   if(!discountApplied){
-    if(code === 'iLoveDiscounts'){
+    if(code === '123'){
   setDiscountApplied(true)
   const discountedPrice = (totalPrice/2)
   setTotalPrice(discountedPrice.toFixed(2))
@@ -98,7 +109,12 @@ const getTotalPrice = () => {
   }
 }
 
-
+const placeOrder = () => {
+  setBasket([]);
+  setTotalPrice('0');
+  setDiscountApplied(false);
+  setOrderPlaced(true);
+}
 
 return (
     <Router>
@@ -106,7 +122,8 @@ return (
       <Nav basket={basket}/>
       <Routes>
         <Route path="/" element={<Home products={products} addToBasket={addToBasket}/>}/>
-        <Route path="/basket" element={<Basket basket={basket} totalPrice={totalPrice} handleDiscount={handleDiscount} setCode={setCode}/>}/>
+        <Route path="/basket" element={<Basket basket={basket} totalPrice={totalPrice} removeById={removeById}/>}/>
+        <Route path="/checkout" element={<Checkout handleDiscount={handleDiscount} setCode={setCode} totalPrice={totalPrice} discountApplied={discountApplied} placeOrder={placeOrder} orderPlaced={orderPlaced}/>}/>
       </Routes>
       </>
     </Router>

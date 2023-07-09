@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DiscountForm = ({handleDiscount, setCode}) => {
+const DiscountForm = ({handleDiscount, setCode, discountApplied}) => {
   
     const handleCodeInput = (event) => {
       setCode(event.target.value)
@@ -12,7 +12,7 @@ const DiscountForm = ({handleDiscount, setCode}) => {
         console.log(event.target[0].value);
         handleDiscount(event.target[0].value);
     }
-  
+    if(!discountApplied){
     return (
     <div>
     <form onSubmit={handleSubmit}>
@@ -22,6 +22,11 @@ const DiscountForm = ({handleDiscount, setCode}) => {
     </form>
     </div>
   )
+      }{
+        return(
+          <h2>Discount applied!</h2>
+        )
+      }
 }
 
 export default DiscountForm;
