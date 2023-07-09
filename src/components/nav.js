@@ -9,9 +9,14 @@ font-size: 50px;
 
 const NavUl = styled.ul`
 display: flex;
+justify-content: left;
 list-style: none;
-gap: 10%;
+gap: 40px;
 align-items: center;
+`
+
+const Img = styled.img`
+width: 80px;
 `
 
 const linkStyle = {
@@ -27,7 +32,8 @@ const Nav = ({basket}) => {
     <>
     
     <NavUl>
-    <Header>Rare Beyblades</Header>
+    <Img src="https://static.thenounproject.com/png/22971-200.png"></Img>
+    <Header>Extremely Rare Beyblades</Header>
         <li>
             <Link to="/" style={linkStyle}>Home</Link>
         </li>

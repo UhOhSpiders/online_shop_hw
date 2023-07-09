@@ -76,7 +76,7 @@ const addToBasket = (product) => {
 const getTotalPrice = () => {
   const initialValue = 0; 
   const sumBasket = basket.reduce((a,c) => a + c['price'], initialValue);
-  setTotalPrice(sumBasket);
+  setTotalPrice(sumBasket.toFixed(2));
 }
 
 

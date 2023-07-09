@@ -42,6 +42,7 @@ return <ProductBox>
   <Image src={product.image}></Image>
   <h2 >{product.name}</h2>
   <p>{product.description}</p>
+  <p>£{product.price}</p>
   <Button onClick={handleClick}>Add To Basket</Button>
 </ProductBox>
   
