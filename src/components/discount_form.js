@@ -16,9 +16,9 @@ const DiscountForm = ({handleDiscount, setCode}) => {
     return (
     <div>
     <form onSubmit={handleSubmit}>
-        <label for="discountCode">Enter Discount Code:</label>
+        <label htmlFor="discountCode">Enter Discount Code:</label>
         <input onChange={handleCodeInput} type="text" id="discountCode" name="discountCode"/><br></br>
-        <input type="submit" value="Submit"></input>
+        <input type="submit" value="Apply Discount Code"></input>
     </form>
     </div>
   )

@@ -10,6 +10,7 @@ const Product = ({product, addToBasket}) => {
   // styles
   const Image = styled.img`
   width: 250px;
+  height: 250px;
   border-radius: 10px;
   `
 
